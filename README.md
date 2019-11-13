@@ -1,6 +1,6 @@
-# horizontal_date_picker
+# Custom_Horizontal_calendar
 
-A new flutter plugin project aims to implement horizontal date picker.
+A new flutter plugin project aims to implement horizontal Calender.
 
 ## Getting Started
 
@@ -22,7 +22,7 @@ samples, guidance on mobile development, and a full API reference.
 ## Example
 This plugin allow you to do custom styles and shapes for Selected and UnSelected dates
 ```dart
-       HorizontalDatePicker(
+           CustomHorizontalCalendar(
                 onDateChoosen: (date){setState(() {
                  chosen=date; 
                 });},
