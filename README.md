@@ -2,6 +2,12 @@
 
 A new flutter plugin project aims to implement horizontal Calender.
 
+# Features #
+-Seperate Date picker Component.
+-CustomShape and style  for Selected Item.
+-CustomShape and style  for unSelected Item.
+-Swipe behavior,not list.
+
 ## Getting Started
 
 This project is a starting point for a Flutter

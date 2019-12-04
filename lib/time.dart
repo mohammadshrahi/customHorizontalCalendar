@@ -52,15 +52,5 @@ class Time {
     return DateFormat('yyyy-MM-dd', localString).format(currentDateTime());
   }
 
-  /// print time
-  void printTime() {
-    final DateTime now = Time().currentDateTime();
-    print(
-        'H:${now.hour} M:${now.minute} S:${now.second} MS:${now.millisecond}');
-    print(currentDateTime());
-  }
-}
-
-void main(List<String> args) {
-  // dart lib\utils\time.dart
+  
 }
