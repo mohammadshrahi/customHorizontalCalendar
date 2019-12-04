@@ -1,8 +1,11 @@
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:custom_horizontal_calendar/date_helper.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:swipedetector/swipedetector.dart';
+
 ///the date picker widget
 class CustomHorizontalCalendar extends StatefulWidget {
   ///the constructor
@@ -32,8 +35,7 @@ class CustomHorizontalCalendar extends StatefulWidget {
   final OnDateChoosen onDateChoosen;
   @override
   State<StatefulWidget> createState() {
-    return 
-    _CustomHorizontalCalendarState();
+    return _CustomHorizontalCalendarState();
   }
 }
 
@@ -54,7 +56,7 @@ class _CustomHorizontalCalendarState extends State<CustomHorizontalCalendar> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, boxConstraint) {
-        print('width : '+boxConstraint.maxWidth.toString());
+        print('width : ' + boxConstraint.maxWidth.toString());
         return SwipeDetector(
           onSwipeLeft: () {
             setState(() {
@@ -77,8 +79,46 @@ class _CustomHorizontalCalendarState extends State<CustomHorizontalCalendar> {
               scrollDirection: Axis.horizontal,
               itemCount: 5,
               itemBuilder: (context, i) {
-                return widget.builder(context, i,
-                    getCurrentDate(i, initalDateIndex, initialDate),boxConstraint.maxWidth/5);
+                return InkWell(
+                    onTap: () async {
+                      if (i == 2) {
+                        if (Platform.isIOS) {
+                          DatePicker.showDatePicker(context,
+                              showTitleActions: true,
+                              minTime: initialDate.add(Duration(days: -365)),
+                              maxTime: initialDate.add(Duration(days: 365)),
+                              onChanged: (date) {
+                            print('change $date');
+                          }, onConfirm: (date) {
+                            setState(() {
+                              initialDate = date;
+                            });
+                            widget.onDateChoosen(initialDate);
+
+                            print('confirm $date');
+                          }, currentTime: initialDate);
+                        } else {
+                          DateTime picked = await showDatePicker(
+                              context: context,
+                              initialDate: initialDate,
+                              firstDate: initialDate.add(Duration(days: -365)),
+                              lastDate: initialDate.add(Duration(days: 365)));
+                          if (picked != null && picked != initialDate) {
+                            setState(() {
+                              setState(() {
+                                initialDate = picked;
+                              });
+                              widget.onDateChoosen(initialDate);
+                            });
+                          }
+                        }
+                      }
+                    },
+                    child: widget.builder(
+                        context,
+                        i,
+                        getCurrentDate(i, initalDateIndex, initialDate),
+                        boxConstraint.maxWidth / 5));
 /*             DateRow(getCurrentDate(i, initalDateIndex, initialDate))
  */
               },
@@ -95,5 +135,10 @@ class _CustomHorizontalCalendarState extends State<CustomHorizontalCalendar> {
 }
 
 typedef RawDateBuilder = Widget Function(
-    BuildContext context, int index, DateTime rawDateTime,double maxWidth);
+    BuildContext context, int index, DateTime rawDateTime, double maxWidth);
 typedef OnDateChoosen = void Function(DateTime dateChoosen);
+
+///
+void startAndroidDatePicker(
+  BuildContext context,
+) async {}

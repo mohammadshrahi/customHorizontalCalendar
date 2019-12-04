@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:custom_horizontal_calendar/date_helper.dart';
 import 'package:swipedetector/swipedetector.dart';
+
 ///the date picker widget
 class HorizontalDatePicker extends StatefulWidget {
   ///the constructor
@@ -52,7 +53,7 @@ class _HorizontalDateState extends State<HorizontalDatePicker> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, boxConstraint) {
-        print('width : '+boxConstraint.maxWidth.toString());
+        print('width : ' + boxConstraint.maxWidth.toString());
         return SwipeDetector(
           onSwipeLeft: () {
             setState(() {
@@ -75,8 +76,11 @@ class _HorizontalDateState extends State<HorizontalDatePicker> {
               scrollDirection: Axis.horizontal,
               itemCount: 5,
               itemBuilder: (context, i) {
-                return widget.builder(context, i,
-                    getCurrentDate(i, initalDateIndex, initialDate),boxConstraint.maxWidth/5);
+                return widget.builder(
+                    context,
+                    i,
+                    getCurrentDate(i, initalDateIndex, initialDate),
+                    boxConstraint.maxWidth / 5);
 /*             DateRow(getCurrentDate(i, initalDateIndex, initialDate))
  */
               },
@@ -93,5 +97,5 @@ class _HorizontalDateState extends State<HorizontalDatePicker> {
 }
 
 typedef RawDateBuilder = Widget Function(
-    BuildContext context, int index, DateTime rawDateTime,double maxWidth);
+    BuildContext context, int index, DateTime rawDateTime, double maxWidth);
 typedef OnDateChoosen = void Function(DateTime dateChoosen);

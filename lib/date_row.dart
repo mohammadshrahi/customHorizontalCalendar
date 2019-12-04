@@ -10,23 +10,24 @@ class DateRow extends StatelessWidget {
       this.selectedDayStyle,
       this.selectedMonthStyle,
       this.width});
-//
-  double width;
+
+  ///
+  final double width;
 
   ///backgroundcolor
-  Color background;
+  final Color background;
 
   ///row date
   final DateTime dateTime;
 
   ///selected  month style
-  TextStyle selectedMonthStyle;
+  final TextStyle selectedMonthStyle;
 
   ///selected day style
-  TextStyle selectedDayStyle;
+  final TextStyle selectedDayStyle;
 
   ///selected weekDay style
-  TextStyle selectedDayOfWeekStyle;
+  final TextStyle selectedDayOfWeekStyle;
   @override
   Widget build(BuildContext context) {
     return Container(
