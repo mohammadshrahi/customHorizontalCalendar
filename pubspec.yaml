@@ -1,5 +1,5 @@
 name: custom_horizontal_calendar
-description: A new Flutter plugin.
+description: A new flutter plugin project aims to implement horizontal Calender, you can add custon shape and styles for selected and unSelected dates.
 version: 0.1.0
 author: Mohammad Alshrahi <Mohammedshrahi@gmail.com>
 homepage: https://github.com/mohammadshrahi/customHorizontalCalendar
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.15.8
+  intl: ^0.16.0
   swipedetector: ^1.2.0
   flutter_datetime_picker: ^1.2.8
 

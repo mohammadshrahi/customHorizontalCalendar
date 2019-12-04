@@ -19,8 +19,8 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
 ## depandancy packeges
-- intl: 0.15.8
-- swipedetector: 1.2.0
+- intl
+- swipedetector
 ## App Demo
 
 ![](app.gif)
