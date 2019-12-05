@@ -112,6 +112,11 @@ class _CustomHorizontalCalendarState extends State<CustomHorizontalCalendar> {
                             });
                           }
                         }
+                      } else {
+                        setState(() {
+                          initialDate=initialDate.add(Duration(days:i-2));
+                        });
+                        widget.onDateChoosen(initialDate);
                       }
                     },
                     child: widget.builder(
