@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.16.0
+  intl: ^0.15.0
   swipedetector: ^1.2.0
   flutter_datetime_picker: ^1.2.8
 

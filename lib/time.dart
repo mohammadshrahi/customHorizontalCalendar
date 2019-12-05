@@ -51,6 +51,4 @@ class Time {
   String currentTime(String localString) {
     return DateFormat('yyyy-MM-dd', localString).format(currentDateTime());
   }
-
-  
 }
